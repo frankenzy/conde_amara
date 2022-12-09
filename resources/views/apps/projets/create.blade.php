@@ -20,7 +20,9 @@
                                 <div class="col-md-6">
                                     <div class="row mb-3">
                                         <label for="nom"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Nom du projet') }}</label>
+                                            class="col-md-4 col-form-label
+                                                    text-md-end">{{ __('Nom du projet') }}
+                                            </label>
 
                                         <div class="col-md-6">
                                             <input id="nom" type="text"
@@ -35,49 +37,47 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    {{-- porteur_projets --}}
+                                    {{-- budget --}}
                                     <div class="row mb-3">
-                                        <label for="porteur_projets"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Porteur projet') }}</label>
+                                        <label for="budget"
+                                               class="col-md-4 col-form-label text-md-end">
+
+                                            {{ __('Investissement (fr cfa)') }}
+                                        </label>
 
                                         <div class="col-md-6">
+                                            <input id="budget" type="number"
+                                                class="border ps-2 form-control @error('budget') is-invalid @enderror"
+                                                name="budget" value="{{ old('budget') }}"
+                                                      required autocomplete="budget">
 
-                                            <select id="porteur_projet_id"
-                                                class="form-select border ps-2 form-control @error('porteur_projet_id') is-invalid @enderror"
-                                                name="porteur_projet_id" required autocomplete="porteur_projet_id"
-                                                aria-label="Porteur du projet">
-                                                <option selected>
-                                                    {{ __('Porteur du projet') }}
-                                                </option>
-                                                @foreach ($porteur_projets as $p)
-                                                    <option value="{{ $p->id }}" @selected(old('porteur_projet_id') == $p->nom)>
-                                                        {{ $p->nom, $p->prenom }}
-                                                    </option>
-                                                @endforeach
-
-                                            </select>
-
-
-                                            @error('porteur_projets')
+                                            @error('budget')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
                                     </div>
+
+
                                     {{-- type_projets --}}
                                     <div class="row mb-3">
                                         <label for="type_projet_id"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Type de projet') }}</label>
+                                            class="col-md-4 col-form-label
+                                                   text-md-end">{{ __('Type de projet') }}
+                                            </label>
 
                                         <div class="col-md-6">
 
                                             <select id="type_projet_id"
-                                                class="form-select border ps-2 form-control @error('type_projet_id') is-invalid @enderror"
-                                                name="type_projet_id" required autocomplete="typeProjet_id">
+                                                class="form-select border ps-2 form-control
+                                                       @error('type_projet_id') is-invalid @enderror"
+                                                       name="type_projet_id" required autocomplete="typeProjet_id
+                                                    ">
                                                 <option selected>{{ __('type de projet') }}</option>
                                                 @foreach ($type_projets as $t)
-                                                    <option value="{{ $t->id }}" @selected(old('type_projet_id') == $t->libelle)>
+                                                    <option value="{{ $t->id }}"
+                                                        @selected(old('type_projet_id') == $t->libelle)>
                                                         {{ $t->libelle }}
 
                                                     </option>
@@ -93,32 +93,60 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!--left column-->
+
                                 <div class="col-md-6">
-                                    {{-- budget --}}
+
+                                    {{-- porteur_projets --}}
                                     <div class="row mb-3">
-                                        <label for="budget"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Budget') }}</label>
+                                        <label for="porteur_projets"
+                                            class="col-md-4 col-form-label
+                                                   text-md-end">{{ __('Porteur projet') }}
+                                            </label>
 
                                         <div class="col-md-6">
-                                            <input id="budget" type="number"
-                                                class="border ps-2 form-control @error('budget') is-invalid @enderror"
-                                                name="budget" value="{{ old('budget') }}" required autocomplete="budget">
 
-                                            @error('budget')
+                                            <select id="porteur_projet_id"
+                                                class="form-select border ps-2 form-control
+                                                        @error('porteur_projet_id') is-invalid @enderror
+                                                        "
+                                                    name="porteur_projet_id"
+                                                    required autocomplete="porteur_projet_id"
+                                                    aria-label="Porteur du projet">
+                                                <option selected>
+                                                    {{ __('Porteur du projet') }}
+                                                </option>
+                                                @foreach ($porteur_projets as $p)
+                                                    <option value="{{ $p->id }}"
+                                                            @selected(old('porteur_projet_id') == $p->nom)>
+                                                        {{ $p->nom, $p->prenom }}
+                                                    </option>
+                                                @endforeach
+
+                                            </select>
+
+
+                                            @error('porteur_projets')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
                                     </div>
+
                                     <div class="row mb-3">
                                         <label for="debut_projet"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Debut de projet') }}</label>
+                                            class="col-md-4 col-form-label
+                                                   text-md-end">{{ __('Date de recuperation') }}
+                                        </label>
 
                                         <div class="col-md-6">
                                             <input id="debut_projet" type="date"
-                                                class="border ps-2 form-control @error('debut_projet') is-invalid @enderror"
-                                                name="debut_projet" required autocomplete="debut_projet"
+                                                class="border ps-2 form-control
+                                                       @error('debut_projet')
+                                                       is-invalid @enderror"
+                                                        name="debut_projet" required
+                                                        autocomplete="debut_projet"
                                                 value="{{ old('debut_projet') }}">
 
 
@@ -132,15 +160,18 @@
 
                                     {{-- debut projet --}}
                                     <div class="row mb-3">
-                                        <label for="fin_projet"
-                                            class="col-md-4 col-form-label text-md-end">{{ __('Fin du projet') }}</label>
+                                        <label for="fin_projet" class="col-md-4 col-form-label
+                                               text-md-end">{{ __('Gain par an') }}
+                                        </label>
 
                                         <div class="col-md-6">
                                             <input id="fin_projet" type="date"
-                                                class="border ps-2 form-control @error('fin_projet') is-invalid @enderror"
+                                                class="border ps-2 form-control
+                                                @error('fin_projet')
+                                                    is-invalid
+                                                @enderror"
                                                 name="fin_projet" required autocomplete="fin_projet"
                                                 value="{{ old('fin_projet') }}">
-
 
                                             @error('fin_projet')
                                                 <span class="invalid-feedback" role="alert">
