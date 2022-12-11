@@ -28,8 +28,9 @@ class StoreProjetRequest extends FormRequest
             'nom'=>'required|min:3',
             'porteur_projet_id' =>'required',
             'type_projet_id'=>'required',
-            'debut_projet'=>'required|date',
-            'fin_projet'=>'required|date'
+            'budget'=>'required',
+            'duree'=>'required',
+            'gain_annuelle'=>'required'
         ];
     }
 }

@@ -16,15 +16,14 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('projet.store') }}">
                             @csrf
-                            <div class="row mb-2">
-                                <div class="col-md-6">
-                                    <div class="row mb-3">
+                            <div class="row mb-0 border-bottom-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="nom"
-                                            class="col-md-4 col-form-label
+                                            class="col-form-label
                                                     text-md-end">{{ __('Nom du projet') }}
                                             </label>
 
-                                        <div class="col-md-6">
+                                        <div>
                                             <input id="nom" type="text"
                                                 class="border ps-2 form-control @error('nom') is-invalid @enderror"
                                                 name="nom" value="{{ old('nom') }}" required autocomplete="nom"
@@ -37,74 +36,15 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    {{-- budget --}}
-                                    <div class="row mb-3">
-                                        <label for="budget"
-                                               class="col-md-4 col-form-label text-md-end">
-
-                                            {{ __('Investissement (fr cfa)') }}
-                                        </label>
-
-                                        <div class="col-md-6">
-                                            <input id="budget" type="number"
-                                                class="border ps-2 form-control @error('budget') is-invalid @enderror"
-                                                name="budget" value="{{ old('budget') }}"
-                                                      required autocomplete="budget">
-
-                                            @error('budget')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-
-                                    {{-- type_projets --}}
-                                    <div class="row mb-3">
-                                        <label for="type_projet_id"
-                                            class="col-md-4 col-form-label
-                                                   text-md-end">{{ __('Type de projet') }}
-                                            </label>
-
-                                        <div class="col-md-6">
-
-                                            <select id="type_projet_id"
-                                                class="form-select border ps-2 form-control
-                                                       @error('type_projet_id') is-invalid @enderror"
-                                                       name="type_projet_id" required autocomplete="typeProjet_id
-                                                    ">
-                                                <option selected>{{ __('type de projet') }}</option>
-                                                @foreach ($type_projets as $t)
-                                                    <option value="{{ $t->id }}"
-                                                        @selected(old('type_projet_id') == $t->libelle)>
-                                                        {{ $t->libelle }}
-
-                                                    </option>
-                                                @endforeach
-
-                                            </select>
-
-                                            @error('type_projets')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--left column-->
-
-                                <div class="col-md-6">
 
                                     {{-- porteur_projets --}}
-                                    <div class="row mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="porteur_projets"
-                                            class="col-md-4 col-form-label
+                                            class="col-form-label
                                                    text-md-end">{{ __('Porteur projet') }}
                                             </label>
 
-                                        <div class="col-md-6">
+                                        <div>
 
                                             <select id="porteur_projet_id"
                                                 class="form-select border ps-2 form-control
@@ -134,23 +74,85 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mb-3">
-                                        <label for="debut_projet"
-                                            class="col-md-4 col-form-label
+                                    {{-- type_projets --}}
+                                    <div class="col-md-4 mb-3">
+                                        <label for="type_projet_id"
+                                            class="col-form-label
+                                                   text-md-end">{{ __('Type de projet') }}
+                                            </label>
+
+                                        <div>
+
+                                            <select id="type_projet_id"
+                                                class="form-select border ps-2 form-control
+                                                       @error('type_projet_id') is-invalid @enderror"
+                                                       name="type_projet_id" required autocomplete="typeProjet_id
+                                                    ">
+                                                <option selected>{{ __('type de projet') }}</option>
+                                                @foreach ($type_projets as $t)
+                                                    <option value="{{ $t->id }}"
+                                                        @selected(old('type_projet_id') == $t->libelle)>
+                                                        {{ $t->libelle }}
+
+                                                    </option>
+                                                @endforeach
+
+                                            </select>
+
+                                            @error('type_projets')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <hr></hr>
+
+                            <div class="row mt-2">
+
+
+                                    {{-- budget --}}
+                                    <div class="col-md-4 mb-3">
+                                        <label for="budget"
+                                               class="col-form-label text-md-end">
+
+                                            {{ __('Investissement (fr cfa)') }}
+                                        </label>
+
+                                        <div>
+                                            <input id="budget" type="number"
+                                                class="border ps-2 form-control @error('budget') is-invalid @enderror"
+                                                name="budget" value="{{ old('budget') }}"
+                                                      required autocomplete="budget">
+
+                                            @error('budget')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    {{-- Date de recuperation --}}
+                                    <div class="col-md-4 mb-3">
+                                        <label for="duree"
+                                            class="col-form-label
                                                    text-md-end">{{ __('Date de recuperation') }}
                                         </label>
 
-                                        <div class="col-md-6">
-                                            <input id="debut_projet" type="date"
+                                        <div>
+                                            <input id="duree" type="text"
                                                 class="border ps-2 form-control
-                                                       @error('debut_projet')
+                                                       @error('duree')
                                                        is-invalid @enderror"
-                                                        name="debut_projet" required
-                                                        autocomplete="debut_projet"
-                                                value="{{ old('debut_projet') }}">
+                                                        name="duree" required
+                                                        autocomplete="duree"
+                                                value="{{ old('duree') }}">
 
 
-                                            @error('debut_projet')
+                                            @error('duree')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -158,22 +160,22 @@
                                         </div>
                                     </div>
 
-                                    {{-- debut projet --}}
-                                    <div class="row mb-3">
-                                        <label for="fin_projet" class="col-md-4 col-form-label
+                                    {{-- Gain par an --}}
+                                    <div class="col-md-4 mb-3">
+                                        <label for="gain_annuelle" class="col-form-label
                                                text-md-end">{{ __('Gain par an') }}
                                         </label>
 
-                                        <div class="col-md-6">
-                                            <input id="fin_projet" type="date"
+                                        <div>
+                                            <input id="gain_annuelle" type="number"
                                                 class="border ps-2 form-control
-                                                @error('fin_projet')
+                                                @error('gain_annuelle')
                                                     is-invalid
                                                 @enderror"
-                                                name="fin_projet" required autocomplete="fin_projet"
-                                                value="{{ old('fin_projet') }}">
+                                                name="gain_annuelle" required autocomplete="gain_annuelle"
+                                                value="{{ old('gain_annuelle') }}">
 
-                                            @error('fin_projet')
+                                            @error('gain_annuelle')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -181,7 +183,7 @@
                                         </div>
                                     </div>
 
-                                </div>
+
 
 
                             </div>

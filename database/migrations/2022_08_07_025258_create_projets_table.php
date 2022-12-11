@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('nom');
             $table->string('van');
             $table->string('tri');
-            $table->date("debut_projet");
-            $table->date("fin_projet");
             $table->string("budget");
+            $table->string("duree");
+            $table->string("gain_annuelle");
             $table->timestamps();
         });
     }

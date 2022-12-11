@@ -28,7 +28,7 @@ class ProjetController extends Controller
         //
         $projets = Projet::all();
 
-        return view('apps.projets.index',compact('projets'));
+        return view('apps.projets.index', compact('projets'));
 
 
 
@@ -44,7 +44,7 @@ class ProjetController extends Controller
     {
         $projets = Projet::all();
 
-        return view('apps.home',compact('projets'));
+        return view('apps.home', compact('projets'));
     }
 
     /**
@@ -59,7 +59,7 @@ class ProjetController extends Controller
 
         $type_projets = TypeProjet::all();
 
-        return view('apps.projets.create',compact('porteur_projets','type_projets'));
+        return view('apps.projets.create', compact('porteur_projets','type_projets'));
 
         //return Blade::render('Blade template string', $data);
     }
@@ -73,17 +73,50 @@ class ProjetController extends Controller
     public function store(StoreProjetRequest $request)
     {
         //
+        $statuts ="";
+        $investissement = $request->budget;
+        $gain = $request->gain_annuelle;
+        $duree = $request->duree;
 
-         $data = Request::all();
+        $benef = ($gain * $duree);
+        $van = ($investissement - $benef);
+
+
+        if($van > 0)
+        {
+            $statuts = "VALIDE";
+        }else if($van < 0)
+        {
+            $statuts = "REJETE";
+        }
+        else
+        {
+            $statuts = "ATTENTE";
+        }
+
+        $projet = new Projet();
+        $projet->create([
+            'nom'=>$request->nom,
+            'porteur_projet_id'=>$request->porteur_projet_id,
+
+            'type_projet_id'=>$request->type_projet_id,
+            'budget'=>$request->budget,
+            'duree'=>$request->duree,
+            'gain_annuelle'=>$request->gain_annuelle,
+            'van'=>$van,
+            'status'=>$statuts,
+
+        ]);
+
 
        // dd($data);
-        Projet::create($data);
+        //Projet::create($data);
        return redirect()->route('projet.index')->with('succes','Ajouté avec succès!');
     }
 
     /**
      * Display the specified resource.
-     *
+     * $table->string(" $table->string("
      * @param  \App\Models\Projet  $projet
      * @return \Illuminate\Http\Response
      */
@@ -137,6 +170,9 @@ class ProjetController extends Controller
     public function destroy(Projet $projet)
     {
         //
+        $projet->delete();
+
+        return redirect()->route('projet.index')->with('succes', 'Modifié avec succes');
     }
 
 
