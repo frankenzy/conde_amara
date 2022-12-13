@@ -33,6 +33,7 @@ class Projet extends Model
         'tri',
         'budget',
        'duree',
+       'status',
        'gain_annuelle',
     ];
     public function typeProjet(){

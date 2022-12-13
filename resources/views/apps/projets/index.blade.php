@@ -50,10 +50,10 @@
 
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
-                                            {{ __('Date debut') }}</th>
+                                            {{ __('Durée') }}</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
-                                            {{ __('Date fin') }}</th>
+                                            {{ __('Gain par an') }}</th>
 
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -99,10 +99,10 @@
 
 
                                             <td>
-                                                <p class="text-sm font-weight-bold mb-0">{{ $p->debut_projet }}</p>
+                                                <p class="text-sm font-weight-bold mb-0">{{ $p->duree }}</p>
                                             </td>
                                             <td>
-                                                <p class="text-sm font-weight-bold mb-0">{{ $p->fin_projet }}</p>
+                                                <p class="text-sm font-weight-bold mb-0">{{ $p->gain_annuelle }}</p>
                                             </td>
 
                                             <td>

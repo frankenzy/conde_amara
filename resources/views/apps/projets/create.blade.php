@@ -79,6 +79,7 @@
                                         <label for="type_projet_id"
                                             class="col-form-label
                                                    text-md-end">{{ __('Type de projet') }}
+
                                             </label>
 
                                         <div>
@@ -97,6 +98,7 @@
                                                     </option>
                                                 @endforeach
 
+
                                             </select>
 
                                             @error('type_projets')
@@ -109,7 +111,7 @@
                             </div>
 
                             <hr></hr>
-
+                            <!-- Button trigger modal -->
                             <div class="row mt-2">
 
 
@@ -201,6 +203,7 @@
         </div>
     </div>
 @endsection
+
 
 
 @push('script')

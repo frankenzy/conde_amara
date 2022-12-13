@@ -27,7 +27,6 @@ class ProjetController extends Controller
     {
         //
         $projets = Projet::all();
-
         return view('apps.projets.index', compact('projets'));
 
 
@@ -60,8 +59,6 @@ class ProjetController extends Controller
         $type_projets = TypeProjet::all();
 
         return view('apps.projets.create', compact('porteur_projets','type_projets'));
-
-        //return Blade::render('Blade template string', $data);
     }
 
     /**
@@ -93,7 +90,6 @@ class ProjetController extends Controller
         {
             $statuts = "ATTENTE";
         }
-
         $projet = new Projet();
         $projet->create([
             'nom'=>$request->nom,
@@ -107,10 +103,6 @@ class ProjetController extends Controller
             'status'=>$statuts,
 
         ]);
-
-
-       // dd($data);
-        //Projet::create($data);
        return redirect()->route('projet.index')->with('succes','Ajouté avec succès!');
     }
 
@@ -161,7 +153,9 @@ class ProjetController extends Controller
         return redirect()->route('projet.index')->with('succes', 'Modifié avec succes');
     }
 
-    /**
+    /**$fake = Projet::get("status");
+        echo $fake;
+        dd();
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Projet  $projet
