@@ -1,0 +1,13 @@
+//
+TODO
+--mise ne place de la home--
+Afin de faciliter la minipulation du projet,
+la table "type projet" sera supprimer et une colonne "type projet" sera créer dans la table projet
+
+
+---
+le champs "fournisseur"
+doit être independant des données de la tables fournisseur afin de facilier l'intersion des données
+
+
+parreil pour le champs porteur

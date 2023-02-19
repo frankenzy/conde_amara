@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('projets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('porteur_projet_id');
-            $table->foreignId('type_projet_id');
+            $table->string('type_projet');
             $table->string('nom');
             $table->string('van');
             $table->string('tri');

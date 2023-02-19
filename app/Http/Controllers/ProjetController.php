@@ -76,7 +76,7 @@ class ProjetController extends Controller
         $duree = $request->duree;
 
         $benef = ($gain * $duree);
-        $van = ($investissement - $benef);
+        $van = ($benef - $investissement);
 
 
         if($van > 0)

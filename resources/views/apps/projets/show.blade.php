@@ -16,6 +16,7 @@
     </style>
 @endpush
 
+
 @section('content')
     <div class="container">
         <section class="vh-100" style="background-color: #f4f5f7;">
@@ -108,7 +109,7 @@
                                                 </div>
 
                                                 <div class="row pt-1">
-                                                    <div class="col-4 mb-3">
+                                                    <div class="col-8 mb-3">
                                                         <h6>V.A.N:
                                                             <input id="van" type="number"
                                                 class="border ps-2 form-control @error('van') is-invalid @enderror"
@@ -117,19 +118,12 @@
 
                                                     </div>
 
-                                                    <div class="col-4 mb-3">
-                                                        <h6>TRI:
-                                                            <input id="tri" type="number"
-                                                class="border ps-2 form-control @error('tri') is-invalid @enderror"
-                                                name="tri" value="{{ $projet->tri }}" required autocomplete="tri">
-                                                        </h6>
 
-                                                    </div>
 
 
                                                     <div class="col-4 mb-3">
                                                         <h6>RENTABILITE</h6>
-                                                        <p class="text-muted">{{ $projet->budget }}</p>
+                                                        <p class="text-muted">{{ $projet->duree * $projet->gain_annuelle }}</p>
                                                     </div>
                                                 </div>
 
